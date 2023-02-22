@@ -1,15 +1,12 @@
 package org.jfree.data.test;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import junit.framework.TestCase;
 import org.jfree.data.Range;
 import org.junit.*;
 
-public class RangeTest extends TestCase {
+import junit.framework.TestCase;
+
+public class RangeTest {
 	
 	private Range rangeObjectUnderTest;
 
@@ -23,8 +20,8 @@ public class RangeTest extends TestCase {
 
 	@Before
 	protected void setUp() throws Exception {
+		super.setUp();
 		rangeObjectUnderTest = new Range(-1, 1);
-		//super.setUp();
 	}
 
 	@After
@@ -34,9 +31,8 @@ public class RangeTest extends TestCase {
 
 	@Test
 	public void testCentralValueShouldBeZero() {
-		assertEqulas("The central value of -1 and 1 should be 0",
+		assertEquals("The central value of -1 and 1 should be 0",
 				0, rangeObjectUnderTest.getCentralValue(), 0.000000001d);
-		
-}
+	}
 
 }
