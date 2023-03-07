@@ -20,7 +20,6 @@
 	<classpathentry kind="lib" path="JFreeChart/lib/jMock/jmock-junit4-2.5.1.jar"/>
 	<classpathentry kind="lib" path="JFreeChart/lib/jMock/jmock-legacy-2.5.1.jar"/>
 	<classpathentry kind="lib" path="JFreeChart/lib/jMock/jmock-script-2.5.1.jar"/>
-	<classpathentry kind="lib" path="JFreeChart/lib/junit-old.jar"/>
 	<classpathentry kind="lib" path="JFreeChart/lib/junit.jar"/>
 	<classpathentry kind="lib" path="JFreeChart/lib/objenesis-1.0.jar"/>
 	<classpathentry kind="lib" path="JFreeChart/lib/servlet.jar"/>
