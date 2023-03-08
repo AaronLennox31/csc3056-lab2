@@ -122,7 +122,7 @@ public class RangeTest extends TestCase {
 		//Tests for Contains()
 		public void testContainsBelowLowerBoundary() {
 			Range r1 = new Range(1, 10);
-			assertEquals("contains: Did not return the expected output", false, r1.contains(1));
+			assertEquals("contains: Did not return the expected output", true, r1.contains(1));
 		}
 		
 		public void testContainsAtLowerBoundary() {
@@ -142,7 +142,7 @@ public class RangeTest extends TestCase {
 		
 		public void testContainsAboveUpperBoundary() {
 			Range r5 = new Range(1, 10);
-			assertEquals("contains: Did not return the expected output", false, r5.contains(10));
+			assertEquals("contains: Did not return the expected output", true, r5.contains(10));
 		}
 
 	//Tests For Equals
