@@ -139,7 +139,7 @@ public class DataUtilitiesTest {
 		}
 		
 		@Test
-		public void testGetCumulativePercentagesNonNull() {
+		public void testGetCumulativePercentagesNonNullPositive() {
 			DefaultKeyedValues keyvalues = new DefaultKeyedValues();
 			keyvalues.addValue((Comparable) 0.0,  6.0);
 			keyvalues.addValue((Comparable) 1.0,  11.0);
@@ -147,5 +147,16 @@ public class DataUtilitiesTest {
 			KeyedValues object_under_test = DataUtilities.getCumulativePercentages((KeyedValues) keyvalues);
 			assertEquals((double) object_under_test.getValue(2), 1.0, 0.000000001d);
 		}
+		
+		@Test
+		public void testGetCumulativePercentagesNonNullNegative() {
+			DefaultKeyedValues keyvalues = new DefaultKeyedValues();
+			keyvalues.addValue((Comparable) 0.0,  -6.0);
+			keyvalues.addValue((Comparable) 1.0,  -11.0);
+			keyvalues.addValue((Comparable) 2.0,  -3.0);
+			KeyedValues object_under_test = DataUtilities.getCumulativePercentages((KeyedValues) keyvalues);
+			System.out.println(object_under_test.getValue(2));
+			assertEquals((double) object_under_test.getValue(2), 1.0, 0.000000001d);
 			
+		}
 }
