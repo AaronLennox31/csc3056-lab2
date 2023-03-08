@@ -194,10 +194,7 @@ public class DataUtilitiesTest {
 			assertEquals((double) object_under_test.getValue(2), 1.0, 0.000000001d);
 		}
 		
-<<<<<<< HEAD
-		
-	
-=======
+
 		@Test
 		public void testGetCumulativePercentagesNonNullNegative() {
 			DefaultKeyedValues keyvalues = new DefaultKeyedValues();
@@ -209,5 +206,5 @@ public class DataUtilitiesTest {
 			assertEquals((double) object_under_test.getValue(2), 1.0, 0.000000001d);
 			
 		}
->>>>>>> 12850db7377b63f31ad5b7eafad164d0899d54b3
+
 }
