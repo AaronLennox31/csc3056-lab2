@@ -2,19 +2,22 @@ package org.jfree.data.test;
 
 import static org.junit.Assert.*;
 import org.jfree.data.DataUtilities;
+import org.jfree.data.DefaultKeyedValues;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.jfree.data.DataUtilities; 
-import org.jfree.data.DefaultKeyedValues2D; 
+import org.jfree.data.DefaultKeyedValues2D;
+import org.jfree.data.KeyedValues;
 import org.jfree.data.Values2D; 
 import junit.framework.TestCase; 
 
 public class DataUtilitiesTest {
 	
 	private Values2D values2D;
+	
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -118,4 +121,31 @@ public class DataUtilitiesTest {
 		}
 		
 		//Tests for getCumulativePercentages
+		@Test
+		public void testGetCumulativePercentagesNull() {
+			 
+			 try 
+				{ 
+				 DefaultKeyedValues keyvalues = null;
+				 KeyedValues object_under_test = DataUtilities.getCumulativePercentages((KeyedValues) keyvalues);
+				 fail("No exception thrown. The expected outcome was: a thrown exception of type: IllegalArgumentException"); 
+				} 
+			catch (Exception e) 
+				{ 
+					assertTrue("Incorrect exception type thrown",  
+					e.getClass().equals(IllegalArgumentException.class)); 
+				} 
+			
+		}
+		
+		@Test
+		public void testGetCumulativePercentagesNonNull() {
+			DefaultKeyedValues keyvalues = new DefaultKeyedValues();
+			keyvalues.addValue((Comparable) 0.0,  6.0);
+			keyvalues.addValue((Comparable) 1.0,  11.0);
+			keyvalues.addValue((Comparable) 2.0,  3.0);
+			KeyedValues object_under_test = DataUtilities.getCumulativePercentages((KeyedValues) keyvalues);
+			assertEquals((double) object_under_test.getValue(2), 1.0, 0.000000001d);
+		}
+			
 }
