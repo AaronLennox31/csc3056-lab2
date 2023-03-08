@@ -32,42 +32,13 @@ public class RangeTest extends TestCase {
 				0, rangeObjectUnderTest.getCentralValue(), 0.000000001d);
 	}
 	
-	
-	//Tests For getLengthMethod
-	@Test
-	public void testGetLengthBothPositiveAndEqual() {
-	    Range r1 = new Range(2, 2);
-	    assertEquals("getLength: Did not return the expected output", 0.0, r1.getLength());
-	}
-	@Test
-	public void testGetLengthBothPositiveAndNotEqual() {
-	    Range r2 = new Range(4, 9);
-	}
-	@Test
-	public void testGetLengthBothNegativeAndEqual() {
-	    Range r3 = new Range(-99, -99);
-	    assertEquals("getLength: Did not return the expected output", 0.0, r3.getLength());
-	}
-	@Test
-	public void testGetLengthBothNegativeAndNotEqual() {
-	    Range r4 = new Range(-11, -4);
-	    assertEquals("getLength: Did not return the expected output", 7.0, r4.getLength());
-	}
-	@Test
-	public void testGetLengthOnePositiveOneNegative() {
-	    Range r5 = new Range(-5, 3);
-	    assertEquals("getLength: Did not return the expected output", 8.0, r5.getLength());
-	}
-	
-	
-	
 	//Tests for getCentralValue
-<<<<<<< Updated upstream
 	@Test
 	public void testGetCentralValue() {
 	    Range r1 = new Range(1, 5);
 	    assertEquals( 3.0, r1.getCentralValue());
-=======
+	}
+	
 	public void testGetCentralValueBothPositiveAndEqual() {
 		Range r1 = new Range(5, 5);
 		assertEquals("getCentralValue: Did not return the expected output", 5.0, r1.getCentralValue());
@@ -91,9 +62,7 @@ public class RangeTest extends TestCase {
 	public void testGetCentralValueLowerNegativeAndUpperPositive() {
 		Range r5 = new Range(-5, 5);
 		assertEquals("getCentralValue: Did not return the expected output", 0.0, r5.getCentralValue());
->>>>>>> Stashed changes
 	}
-	
 	
 	//Tests for getUpperBound
 	@Test
@@ -149,9 +118,6 @@ public class RangeTest extends TestCase {
 			assertEquals("getLowerBound: Did not return the expected output", -5.0, r5.getLowerBound());
 			
 		}
-		
-		
-	
 		
 		//Tests for Contains()
 		public void testContainsBelowLowerBoundary() {
