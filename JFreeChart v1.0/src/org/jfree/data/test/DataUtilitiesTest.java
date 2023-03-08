@@ -31,22 +31,39 @@ public class DataUtilitiesTest {
 	public void setUp(){
 		DefaultKeyedValues2D testValues = new DefaultKeyedValues2D();
 		values2D = testValues;
-		testValues.addValue(1, 0, 0);
-		testValues.addValue(4, 1, 0);
+		testValues.addValue(1, 2, 3);
+		testValues.addValue(4, 5, 6);
 	}
 
 	@After
 	public void tearDown(){
 		values2D = null;
 	}
+	
+	/*
+	 * private Values2D values2DNeg;
+	 * 
+	 * 
+	 * @BeforeClass public static void setUpBeforeClass1() throws Exception { }
+	 * 
+	 * @AfterClass public static void tearDownAfterClass1() throws Exception { }
+	 * 
+	 * @Before public void setUp1(){ DefaultKeyedValues2D testValues2 = new
+	 * DefaultKeyedValues2D(); values2DNeg = testValues2; testValues2.addValue(-1,
+	 * -2, -3); testValues2.addValue(-4, -5, -6); }
+	 * 
+	 * @After public void tearDown1(){ values2DNeg = null; }
+	 */
 
+	
+	
+	//Tests for calculateColumnTotal
 	@Test
-	public void testValidDataAndColumnTotal() {
-		assertEquals("Wrong sum returned. It should be 5.0",  
-		        5.0, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d); 
+	public void testCalculateColumnTotalValidData() {
+		assertEquals("Wrong sum returned. It should be 5.0",  5.0, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d); 
 	}
 	@Test
-	public void testNullDataColumnTotal()
+	public void testCalculateColumnTotalNullData()
 	{ 
 	  try 
 	  { 
@@ -59,7 +76,36 @@ public class DataUtilitiesTest {
 	      e.getClass().equals(IllegalArgumentException.class)); 
 	  } 
 	} 
+	/*
+	 * @Test public void testCalculateColumnTotalNegative() {
+	 * assertEquals("Wrong sum returned. It should be -5.0", -5.0,
+	 * DataUtilities.calculateColumnTotal(values2DNeg, 0), 0.0000001d); }
+	 */
 	
+	
+	//Tests For CalculateRowTotal()
+	@Test
+	public void testCalculateRowTotalValidData() {
+		assertEquals("Wrong sum returned. It should be 6.0",  6.0, DataUtilities.calculateRowTotal(values2D, 0), 0.0000001d); 
+	}
+	@Test
+	public void testCalculateRowTotalNullData()
+	{ 
+	  try 
+	  { 
+	    DataUtilities.calculateRowTotal(null, 0); 
+	    fail("No exception thrown. The expected outcome was: a thrown exception of type: IllegalArgumentException"); 
+	  } 
+	  catch (Exception e) 
+	  { 
+	    assertTrue("Incorrect exception type thrown",  
+	      e.getClass().equals(IllegalArgumentException.class)); 
+	  } 
+	} 
+//	@Test
+//	public void testCalculateRowTotalNegative() {
+//		assertEquals("Wrong sum returned. It should be -6.0",  -6.0, DataUtilities.calculateRowTotal(values2DNeg, 0), 0.0000001d); 
+//	}
 	
 	//Tests for createNumberArray
 	@Test
@@ -147,5 +193,7 @@ public class DataUtilitiesTest {
 			KeyedValues object_under_test = DataUtilities.getCumulativePercentages((KeyedValues) keyvalues);
 			assertEquals((double) object_under_test.getValue(2), 1.0, 0.000000001d);
 		}
-			
+		
+		
+	
 }
