@@ -62,10 +62,36 @@ public class RangeTest extends TestCase {
 	
 	
 	//Tests for getCentralValue
+<<<<<<< Updated upstream
 	@Test
 	public void testGetCentralValue() {
 	    Range r1 = new Range(1, 5);
 	    assertEquals( 3.0, r1.getCentralValue());
+=======
+	public void testGetCentralValueBothPositiveAndEqual() {
+		Range r1 = new Range(5, 5);
+		assertEquals("getCentralValue: Did not return the expected output", 5.0, r1.getCentralValue());
+	}
+	
+	public void testGetCentralValueBothPostiveAndNotEqual() {
+		Range r2 = new Range(1, 10);
+		assertEquals("getCentralValue: Did not return the expected output", 5.0, r2.getCentralValue());
+	}
+	
+	public void testGetCentralValueBothNegativeAndNotEqual() {
+		Range r3 = new Range(-10, -1);
+		assertEquals("getCentralValue: Did not return the expected output", -5.0, r3.getCentralValue());
+	}
+	
+	public void testGetCentralValueBothNegativeAndEqual() {
+		Range r4 = new Range(-5, -5);
+		assertEquals("getCentralValue: Did not return the expected output", -5.0, r4.getCentralValue());
+	}
+	
+	public void testGetCentralValueLowerNegativeAndUpperPositive() {
+		Range r5 = new Range(-5, 5);
+		assertEquals("getCentralValue: Did not return the expected output", 0.0, r5.getCentralValue());
+>>>>>>> Stashed changes
 	}
 	
 	
@@ -127,7 +153,61 @@ public class RangeTest extends TestCase {
 		
 	
 		
+		//Tests for Contains()
+		public void testContainsBelowLowerBoundary() {
+			Range r1 = new Range(1, 10);
+			assertEquals("contains: Did not return the expected output", false, r1.contains(0));
+		}
+		
+		public void testContainsAtLowerBoundary() {
+			Range r2 = new Range(1, 10);
+			assertEquals("contains: Did not return the expected output", true, r2.contains(1));
+		}
+		
+		public void testContainsCenterRange() {
+			Range r3 = new Range(1, 10);
+			assertEquals("contains: Did not return the expected output", true, r3.contains(5));
+		}
+		
+		public void testContainsAtUpperBoundary() {
+			Range r4 = new Range(1, 10);
+			assertEquals("contains: Did not return the expected output", true, r4.contains(10));
+		}
+		
+		public void testContainsAboveUpperBoundary() {
+			Range r5 = new Range(1, 10);
+			assertEquals("contains: Did not return the expected output", false, r5.contains(11));
+		}
 
-	
+	//Tests For Equals
+		public void testEqualsBelowLowerBoundary() {
+			Range r1 = new Range(1, 10);
+			Range t1 = new Range(11, 20);
+			assertEquals("equals: Did not return the expected output", false, r1.equals(t1));
+		}
+		
+		public void testEqualsAtLowerBoundary() {
+			Range r2 = new Range(1, 10);
+			Range t2 = new Range(-10,1);
+			assertEquals("equals: Did not return the expected output", false, r2.equals(t2));
+		}
+		
+		public void testEqualsCenterRange() {
+			Range r3 = new Range(1, 10);
+			Range t3 = new Range(1,10);
+			assertEquals("equals: Did not return the expected output", true, r3.equals(t3));
+		}
+		
+		public void testEqualsAtUpperBoundary() {
+			Range r4 = new Range(1, 10);
+			Range t4 = new Range(0,11);
+			assertEquals("equals: Did not return the expected output", false, r4.equals(t4));
+		}
+		
+		public void testEqualsAboveUpperBoundary() {
+			Range r5 = new Range(1, 10);
+			Range t5 = new Range(2,9);
+			assertEquals("equals: Did not return the expected output", false, r5.equals(t5));
+		}
 
 }
